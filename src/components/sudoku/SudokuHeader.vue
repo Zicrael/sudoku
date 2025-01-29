@@ -28,7 +28,7 @@ import { difficultyLabelMap } from '@/mappings/difficultyMap'
 const GameStore = useGameStore()
 
 const timer = ref(0)
-const interval = ref<number | null>(null)
+const interval = ref<ReturnType<typeof setInterval> | null>(null)
 const formattedTimer = ref<string>('00:00')
 
 watch(
