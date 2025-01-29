@@ -1,0 +1,72 @@
+@import './base.css';
+
+:root {
+  --light-primary-color: #0384c7; /* Light primary color */
+  --primary-color: #0077b5; /* Primary color */
+  --dark-primary-color: #025480; /* Dark Primary color */
+  --main-frame-border: #005a8c; /* Main frame borders */
+  --cell-border: #c6d9e5; /* Cell border */
+  --selected-cell-color: #b5e1ff; /* Selected cell background */
+  --highlighted-cell-color: #e1eef6; /* Selected cell background */
+  --disabled-cell-color: #b3d1e6; /* Disabled cell background */
+  --hover-button-color: #e9ecee; /* Hover button color */
+  --text-color: #535353; /* Text color */
+  --text-light-color: #8193a3; /* Text color */
+  --error-cell-color: #fa9696; /* Error cell background */
+  --danger-button-color: #fd5858; /* Error cell background */
+  --hover-danger-color: #fc6868; /* Error cell background */
+  --win-color: #16dd82; /* Win color */
+  --hover-win-color: #31eb98; /* Hover win color */
+  --white-color: #ffffff; /* White color */
+}
+.flex {
+  display: flex;
+}
+.direction-row {
+  flex-direction: row;
+}
+.direction-column {
+  flex-direction: column;
+}
+.align-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.w-100 {
+  width: 100%;
+}
+.h-100 {
+  height: 100%;
+}
+.c-pointer {
+  cursor: pointer;
+}
+.text-bold {
+  font-weight: 600;
+}
+.text-primary {
+  color: var(--primary-color);
+}
+.text-dark-primary {
+  color: var(--dark-primary-color);
+}
+.text-light {
+  color: var(--text-light-color);
+}
+.text-center {
+  text-align: center;
+}
+.app-btn {
+  height: 50px;
+  width: 100%;
+  color: #ffffff;
+  border-radius: 12px;
+  border: 2px solid var(--primary-color);
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
