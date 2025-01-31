@@ -41,12 +41,7 @@
         <button
           class="sidebar-actions-item-button c-pointer flex direction-column justify-center align-center"
           :class="{
-            disabled:
-              GameStore.selectedCell === null ||
-              !GameStore.table[GameStore.selectedCell].editable ||
-              GameStore.table[GameStore.selectedCell].resolved ||
-              GameStore.hints.used === GameStore.hints.max ||
-              GameStore.gameFinished,
+            disabled: isHintDisabled,
           }"
           @click="useHint"
         >
@@ -83,7 +78,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useGameStore } from '@/stores/gameStore.ts'
 import { GameState } from '@/enums/GameStoreEnums.ts'
 import AppIcon from '@/components/icons/AppIcon.vue'
@@ -95,6 +90,16 @@ import HintBulb from '@/components/icons/HintBulb.vue'
 const GameStore = useGameStore()
 const numpadButtons = ref([1, 2, 3, 4, 5, 6, 7, 8, 9])
 const draftMode = ref(false)
+
+const isHintDisabled = computed(() => {
+  return (
+    GameStore.selectedCell === null ||
+    !GameStore.table[GameStore.selectedCell].editable ||
+    GameStore.table[GameStore.selectedCell].resolved ||
+    GameStore.hints.used === GameStore.hints.max ||
+    GameStore.gameFinished
+  )
+})
 
 const handleNumpandAction = (value: number) => {
   if (

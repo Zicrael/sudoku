@@ -321,7 +321,9 @@ onMounted(() => {
   const numberCounter = localStorage.getItem('numberCounter')
   const gameFinished = localStorage.getItem('gameFinished')
 
-  if (tableSnapshot) {
+  if (!tableSnapshot || tableSnapshot === '[]') {
+    createTable()
+  } else {
     const parsedTable: ITableCell[] = JSON.parse(tableSnapshot) as ITableCell[]
     table.value = parsedTable
     resetUsage()
@@ -331,8 +333,6 @@ onMounted(() => {
       }
     }
     GameStore.changeSudokuTable(parsedTable)
-  } else {
-    createTable()
   }
 
   if (numberCounter) {

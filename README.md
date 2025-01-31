@@ -1,6 +1,6 @@
 # Sudoku
 
-Sudoku game created with Vue 3 | Vite | Pinia | TypeScript
+Sudoku game created with Vue 3 | Vite | Pinia | TypeScript [DEMO](https://zicrael.github.io/sudoku/)
 
 ## Project Setup
 
