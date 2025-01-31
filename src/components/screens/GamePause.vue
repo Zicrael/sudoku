@@ -1,13 +1,13 @@
 <template>
-  <div class="game-pause-wrapper flex direction-column align-center justify-center">
-    <div class="game-pause-icon flex align-center justify-center">
+  <section class="game-pause-wrapper flex direction-column align-center justify-center">
+    <div class="game-pause-icon flex align-center justify-center mb-2">
       <AppIcon height="80px" width="80px" color="#fff">
         <PauseIcon />
       </AppIcon>
     </div>
-    <div class="game-pause-text">GAME PAUSED</div>
+    <h1 class="game-pause-title app-screen-title mb-2">GAME PAUSED</h1>
     <button class="game-resume-button app-btn" @click="resumeGame()">Resume</button>
-  </div>
+  </section>
 </template>
 <script setup lang="ts">
 import { useGameStore } from '@/stores/gameStore.ts'
@@ -31,11 +31,9 @@ const resumeGame = () => {
     width: 125px;
     background-color: var(--dark-primary-color);
     border-radius: 9999px;
-    margin-bottom: 1rem;
   }
-  .game-pause-text {
+  .game-pause-title {
     font-size: 24px;
-    margin-bottom: 1rem;
   }
   .game-resume-button {
     max-width: 180px;

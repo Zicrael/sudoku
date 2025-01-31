@@ -1,15 +1,15 @@
 <template>
-  <div class="sudoku-header-wrapper flex justify-between align-center text-bold">
+  <div class="sudoku-header-content flex justify-between align-center text-bold">
     <div class="sudoku-header-difficulty">
       <span class="text-light">Difficulty: </span>
       <span>{{ difficultyLabelMap[GameStore.getGameSettings.difficulty] }}</span>
     </div>
     <div class="sudoku-header-progress flex">
-      <div class="sudoku-header-hints">
+      <div class="sudoku-header-hints mr-4">
         <span class="text-light">Hints: </span>
         <span>{{ GameStore.hints.max - GameStore.hints.used }} / {{ GameStore.hints.max }}</span>
       </div>
-      <div class="sudoku-header-score">
+      <div class="sudoku-header-score mr-4">
         <span class="text-light">Score: </span>
         <span>{{ GameStore.gameProgress.score }}</span>
       </div>
@@ -102,12 +102,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.sudoku-header-wrapper {
-  padding: 1rem;
+.sudoku-header-content {
   font-size: 18px;
-  .sudoku-header-hints,
-  .sudoku-header-score {
-    margin-right: 2rem;
-  }
 }
 </style>

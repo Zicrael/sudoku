@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sudoku-table-wrapper flex w-100 h-100"
+    class="sudoku-table-content flex w-100 h-100"
     :class="{ 'sudoku-table-complete': winAnimationStarted }"
   >
     <div
@@ -23,13 +23,16 @@
       </div>
       <div v-else class="sudoku-table-cell-draft">{{ cell.draft }}</div>
     </div>
-    <div class="sudoku-table-win-screen" :class="{ hidden: !winAnimationFinished }">
-      <div class="win-screen-icon flex">
+    <div
+      class="sudoku-table-win-screen flex align-center justify-center direction-column"
+      :class="{ hidden: !winAnimationFinished }"
+    >
+      <div class="win-screen-icon flex mb-1">
         <AppIcon width="100px" height="100px" color="#FFDD44">
           <TrophyIcon />
         </AppIcon>
       </div>
-      <div class="win-screen-text">{{ congratulationsMessage }}</div>
+      <div class="win-screen-text mb-1">{{ congratulationsMessage }}</div>
       <div class="win-screen-score">
         TOTAL SCORE: <span class="text-bold">{{ GameStore.gameProgress.score }}</span>
       </div>
@@ -119,10 +122,11 @@ onUnmounted(() => {
 })
 </script>
 <style lang="scss" scoped>
-.sudoku-table-wrapper {
+.sudoku-table-content {
   border: 2px solid var(--main-frame-border);
   flex-wrap: wrap;
   position: relative;
+  aspect-ratio: 1 / 1;
   &.sudoku-table-complete {
     border: 2px solid var(--win-color);
   }
@@ -175,10 +179,6 @@ onUnmounted(() => {
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     background-color: var(--win-color);
     color: var(--white-color);
     &.hidden {
@@ -189,11 +189,7 @@ onUnmounted(() => {
       visibility: visible;
       opacity: 1;
     }
-    .win-screen-icon {
-      margin-bottom: 0.5rem;
-    }
     .win-screen-text {
-      margin-bottom: 0.5rem;
       font-size: 24px;
     }
     .win-screen-score {

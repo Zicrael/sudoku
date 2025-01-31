@@ -1,5 +1,5 @@
 @import './base.css';
-
+@import './indent.css';
 :root {
   --light-primary-color: #0384c7; /* Light primary color */
   --primary-color: #0077b5; /* Primary color */
@@ -69,4 +69,16 @@
   border: 2px solid var(--primary-color);
   background-color: var(--primary-color);
   cursor: pointer;
+}
+.app-text-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+}
+.app-text-btn:hover {
+  color: var(--primary-color);
+}
+.app-screen-title {
+  font-size: 28px;
+  font-weight: 600;
 }

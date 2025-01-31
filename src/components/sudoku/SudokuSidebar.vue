@@ -1,20 +1,20 @@
 <template>
-  <div class="sudoku-sidebar-wrapper flex direction-column justify-between h-100">
-    <div class="sudoku-sidebar-actions flex direction-row justify-between">
+  <div class="sudoku-sidebar-content flex direction-column justify-between h-100">
+    <div class="sudoku-sidebar-actions flex direction-row justify-between mb-4">
       <div class="sidebar-actions-item text-center">
         <!-- DEV NOTE: sorry, had no time to finish undo logic :( -->
-        <div
+        <button
           class="sidebar-actions-item-button c-pointer flex direction-column justify-center align-center"
           :class="{ disabled: true }"
         >
           <AppIcon color="#ffffff">
             <UndoArrow />
           </AppIcon>
-        </div>
+        </button>
         <span>Undo</span>
       </div>
       <div class="sidebar-actions-item text-center">
-        <div
+        <button
           class="sidebar-actions-item-button c-pointer flex direction-column justify-center align-center"
           :class="{ disabled: GameStore.gameFinished }"
           @click="pauseGame"
@@ -22,11 +22,11 @@
           <AppIcon color="#ffffff">
             <PauseIcon />
           </AppIcon>
-        </div>
+        </button>
         <span>Pause</span>
       </div>
       <div class="sidebar-actions-item text-center">
-        <div
+        <button
           class="sidebar-actions-item-button c-pointer flex direction-column justify-center align-center"
           :class="{ enabled: draftMode, disabled: GameStore.gameFinished }"
           @click="toggleDraft"
@@ -34,11 +34,11 @@
           <AppIcon color="#ffffff">
             <DraftPen />
           </AppIcon>
-        </div>
+        </button>
         <span :class="{ 'text-primary': draftMode }">Draft</span>
       </div>
       <div class="sidebar-actions-item text-center">
-        <div
+        <button
           class="sidebar-actions-item-button c-pointer flex direction-column justify-center align-center"
           :class="{
             disabled:
@@ -53,20 +53,20 @@
           <AppIcon color="#ffffff">
             <HintBulb />
           </AppIcon>
-        </div>
+        </button>
         <span>Hint</span>
       </div>
     </div>
-    <div class="sudoku-sidebar-numpad flex">
-      <div
+    <div class="sudoku-sidebar-numpad flex justify-between">
+      <button
         v-for="(item, i) of numpadButtons"
-        class="sidebar-numpad-item flex align-center justify-center c-pointer"
+        class="sidebar-numpad-item flex align-center justify-center c-pointer mb-2"
         :class="{ disabled: GameStore.getRemainNumberCounter[item - 1] === 0 }"
         :key="i"
         @click="handleNumpandAction(item)"
       >
         {{ item }}
-      </div>
+      </button>
     </div>
     <div>
       <button
@@ -103,7 +103,11 @@ const handleNumpandAction = (value: number) => {
     GameStore.table[GameStore.selectedCell].value !== value &&
     GameStore.getRemainNumberCounter[value - 1] !== 0
   ) {
-    GameStore.handleCellInput(GameStore.selectedCell, value)
+    if (GameStore.draftMode) {
+      GameStore.handleDraftInput(GameStore.selectedCell, value)
+    } else {
+      GameStore.handleCellInput(GameStore.selectedCell, value)
+    }
   }
 }
 const toggleDraft = () => {
@@ -141,11 +145,7 @@ onMounted(() => {
 })
 </script>
 <style lang="scss" scoped>
-.sudoku-sidebar-wrapper {
-  padding: 1rem;
-  .sudoku-sidebar-actions {
-    margin-bottom: 2rem;
-  }
+.sudoku-sidebar-content {
   .sidebar-actions-item {
     height: 65px;
     font-size: 14px;
@@ -173,14 +173,16 @@ onMounted(() => {
   }
   .sudoku-sidebar-numpad {
     flex-wrap: wrap;
+    aspect-ratio: 1 / 1;
     .sidebar-numpad-item {
-      width: 100px;
       font-size: 32px;
       border: 2px solid var(--highlighted-cell-color);
       border-radius: 12px;
+      width: 100px;
       height: 100px;
       background-color: var(--highlighted-cell-color);
       color: var(--dark-primary-color);
+      aspect-ratio: 1 / 1;
       &.disabled {
         opacity: 0.5;
         cursor: not-allowed;
@@ -192,10 +194,6 @@ onMounted(() => {
       &:hover {
         background-color: var(--selected-cell-color);
         border: 1px solid var(--selected-cell-color);
-      }
-      &:not(:nth-child(3n)) {
-        margin-bottom: 1rem;
-        margin-right: 1rem;
       }
     }
   }

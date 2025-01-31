@@ -1,8 +1,8 @@
 <template>
-  <div class="game-settings-wrapper flex align-center">
-    <div class="game-settings-title">SETTINGS</div>
-    <div class="game-settings-list">
-      <div class="game-settings-item">
+  <section class="game-settings-wrapper flex align-center">
+    <h1 class="game-settings-title app-screen-title">SETTINGS</h1>
+    <div class="game-settings-list mt-4 mb-4">
+      <div class="game-settings-item mb-4">
         <div class="game-settings-item-title">Difficulty:</div>
         <AppCustomDropdown
           :options="difficultyOptions"
@@ -10,7 +10,7 @@
           @onSelect="onDifficultySelect"
         />
       </div>
-      <div class="game-settings-item">
+      <div class="game-settings-item mb-4">
         <div class="game-settings-item-title">Background:</div>
         <AppCustomDropdown
           :options="backgroundOptions"
@@ -19,8 +19,8 @@
         />
       </div>
     </div>
-    <div
-      class="game-settings-back flex align-center c-pointer"
+    <button
+      class="app-text-btn game-settings-back flex align-center c-pointer"
       @mouseover="backIconColor = '#0077b5'"
       @mouseout="backIconColor = '#003d5c'"
       @click="backToMenu"
@@ -31,8 +31,8 @@
         </AppIcon>
       </span>
       <span class="flex">BACK TO MENU</span>
-    </div>
-  </div>
+    </button>
+  </section>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
@@ -82,14 +82,8 @@ onMounted(() => {
   flex-direction: column;
   padding: 3rem;
   position: relative;
-  .game-settings-title {
-    font-size: 28px;
-    font-weight: 600;
-  }
   .game-settings-list {
-    margin: 2rem 0;
     .game-settings-item {
-      margin-bottom: 2rem;
       .game-settings-item-title {
         font-size: 16px;
         font-weight: 500;
@@ -103,9 +97,6 @@ onMounted(() => {
   left: 3rem;
   top: calc(2rem + 22px);
   font-size: 18px;
-  &:hover {
-    color: var(--primary-color);
-  }
 }
 @media screen and (max-width: 960px) {
   .game-settings-back {

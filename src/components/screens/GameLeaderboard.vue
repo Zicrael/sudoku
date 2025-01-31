@@ -1,6 +1,6 @@
 <template>
-  <div class="game-leaderboard-wrapper flex direction-column align-center">
-    <div class="game-leaderboard-title">LEADERBOARD</div>
+  <section class="game-leaderboard-wrapper flex direction-column align-center">
+    <h1 class="game-leaderboard-title app-screen-title mb-4">LEADERBOARD</h1>
     <div class="game-leaderboard-container w-100 h-100 flex direction-row">
       <div class="game-leaderboard-category flex direction-column">
         <div class="leaderboard-category-title text-bold text-center">
@@ -72,7 +72,7 @@
       </span>
       <span class="flex">BACK TO MENU</span>
     </div>
-  </div>
+  </section>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -95,11 +95,6 @@ const backToMenu = () => {
   height: 100%;
   padding: 3rem;
   position: relative;
-  .game-leaderboard-title {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 2rem;
-  }
   .game-leaderboard-category {
     width: 25%;
     padding: 0 1rem;

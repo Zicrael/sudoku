@@ -1,17 +1,17 @@
 <template>
-  <div class="sudoku-wrapper-wrapper flex direction-column">
-    <div class="sudoku-wrapper-header">
+  <section class="sudoku-wrapper-wrapper flex direction-column">
+    <header class="sudoku-wrapper-header mt-2 mr-2 ml-2">
       <SudokuHeader />
-    </div>
+    </header>
     <div class="sudoku-wrapper-row flex">
-      <div class="sudoku-wrapper-table">
+      <section class="sudoku-wrapper-table m-2 mt-0">
         <SudokuTable />
-      </div>
-      <div class="sudoku-wrapper-sidebar">
+      </section>
+      <aside class="sudoku-wrapper-sidebar m-2">
         <SudokuSidebar />
-      </div>
+      </aside>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -352,19 +352,16 @@ onMounted(() => {
   height: 100%;
 
   .sudoku-wrapper-header {
-    width: 100%;
-    height: 50px;
     flex-shrink: 0;
   }
 
   .sudoku-wrapper-row {
-    height: calc(100% - 50px);
+    height: calc(100% - 1rem - 28px);
   }
 }
 
 .sudoku-wrapper-table {
   width: 60%;
-  padding: 1rem;
 }
 
 .sudoku-wrapper-sidebar {
